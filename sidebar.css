@@ -1,0 +1,43 @@
+#sidebar-wrapper{
+    z-index: 1;
+    position: absolute;
+    width: 0;
+    height: 100%;
+    overflow-y: hidden; /* content too long = hide it */
+    background: #59aeff;
+    opacity: 0.9; /* can see through it */
+
+}
+
+/* [Page] Content */
+#page-content-wrapper{
+    width: 100%;
+    position: absolute;
+    padding: 15px;
+
+
+}
+
+/* Change width of sidebar when the menu is displayed */
+#wrapper.menuDisplayed #sidebar-wrapper{
+    width: 250px;
+}
+/* Sidebar should not overlap main page content */
+#wrapper.menuDisplayed #page-content-wrapper{
+    padding-left: 250px;
+}
+
+/* Sidebar Styles */
+.sidebar-nav{
+    padding: 0;
+    list-style: none; /* no bullets, arrows, etc */
+}
+.sidebar-nav li{
+    text-indent: 20px;
+    line-height: 40px;
+}
+.sidebar-nav li a{
+    display: block;
+    text-decoration: none;
+    color: #ddd;
+}
