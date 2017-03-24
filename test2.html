@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<body>
+uname: <input type="text" id="uname">
+
+<script>
+function setUnameCookie() {
+	var str1 = "uname="
+	var str2 = document.getElementById("uname").value;
+	document.cookie = str1.concat(str2);
+	console.log(document.cookie);
+}
+</script>
+
+<button onclick="setUnameCookie()">set the cookie></button>
+<p>testText1</p>
+</body>
+</html>
