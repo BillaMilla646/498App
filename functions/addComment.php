@@ -19,5 +19,7 @@
 		$_SESSION['db']->close();
 	}
 	
-
+	$chatName = $_POST("chatName");
+	$comment = $_POST("comment");
+	addComment(1, $chatID, $comment);
 ?>

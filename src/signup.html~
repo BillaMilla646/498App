@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title>StudyBuddy | Signup</title>
+        <link rel="stylesheet" href="../../style.css" type="text/css"/>
+    </head>
+    <body>
+        <div id="header">
+            StudyBuddy
+        </div>
+        <div id="mainWrapper">
+		  <form method = "post" action="../functions/addUser.php">
+            <div id="signUpContainer">
+                <div class="formInput">
+                    <input type="text" required autocomplete="off" placeholder="Name" name="username"/>
+                </div>
+                <div class="formInput">
+                    <input type="text" required autocomplete="off" placeholder="Email" name="email"/>
+                </div>
+                <div class="formInput">
+                    <input type="password" required autocomplete="off" placeholder="Password" name="password"/>
+                </div>
+                
+                <input type="submit" name="submit" value="Sign Up!" class="signUpButton"/> 
+            
+			</div>
+		  </form>
+        </div>
+    </body>
+</html>

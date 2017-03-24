@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <title>StudyBuddy</title>
+        <link rel="stylesheet" href="../css/style.css" type="text/css"/>
+    </head>
+    <body>
+        <div id="header">
+            StudyBuddy
+        </div>
+        <div id="centerScreen">
+            <div id="loginWrapper">
+                <ul>
+                    <li><a onclick="document.getElementById('id01').style.display='block'">Login</a></li>
+                    <li><a href="./signup.html">Sign Up</a></li>
+                </ul>
+                <div id="id01" class="modal">
+  
+                    <form class="modal-content animate" method="post" action="../functions/verifyUsername.php">
+                        <div class="container">
+                            <label><b>Email</b></label>
+                            <input type="text" placeholder="Enter Email" name="email" required>
+
+                            <label><b>Password</b></label>
+                            <input type="password" placeholder="Enter Password" name="psw" required>
+
+                            <button type="submit">Login</button>
+                            <input type="checkbox" checked="checked"> Remember me
+                            
+                            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                        </div>
+
+                        <div class="container">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
