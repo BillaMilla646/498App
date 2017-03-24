@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="sidebar.css">
+    <link rel="stylesheet" href="../css/sidebar.css">
 </head>
 
 <body style="background-color:#8ecaff;" id="index">
@@ -17,12 +17,12 @@
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
-                <li>This is the Username</li>
-                <li><a href="#">Chatrooms</a></li>
+                <li>Guest</li>
+                <li><a href="#" id="chatLink">Chatrooms</a></li>
                 <li><a href="#">Search</a></li>
                 <li><a href="#">Profile</a></li>
                 <li><a href="#">Settings</a></li>
-                <li><a href="http://ctma226.netlab.uky.edu/">Logout</a></li>
+                <li><a href="http://ctma226.netlab.uky.edu/498App/src/index.html">Logout</a></li>
             </ul>
         </div>
 
@@ -32,48 +32,114 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-
-                    <!--
-                        <div class="row">
-                            <div>
-                                <img src="books.png" class="img-responsive" width="150" height="150" align="" style="padding-left: 10px; float: left;">
-                                <i style="float: left; padding-left: 10px;"><h1>StudyBuddy</h1></i>
-                                <img src="books.png" class="img-responsive" width="150" height="150" style="margin-left: 10px; float: left;">
-                                <div style="clear: both"/>
-
-                            </div>
-                        </div>
-                      -->
-
                         <h1 style="color: white; text-align: center;">StudyBuddy</h1>
-
-
                         <a href="#" class="btn btn-success" id="menu-toggle">Dashboard</a>
 
-                        <p></p>
-                        <p>This will include the contents of the chat room</p>
+                        <br></br>
+
+                        <!-- > create chatroom button  <-->
+                        <div class = "createChat">
+                        </div>
+
+                        <!-- created chatroom form, calls addChatroom.php and appends chatroom to database <-->
+                        <div class = "createRoom" id="createRoom">
+                          <form method="post" action="../functions/addChatroom.php">
+
+                            <label><b>Chatroom</b></label>
+                            <input type="text" placeholder="Name of Chatroom" name="chatName" id = "chatName" required>
+
+                            <label><b>Password</b></label>
+                            <input type="password" placeholder="Enter Password" name="psw" required>
+
+                            <input type="submit" name="submit" id ="chatID">
+                            <button type="button" onclick="document.getElementById('createRoom').style.display='none'" class="cancelbtn">Cancel</button>
+                          </form>
+                        </div>
+
+                        <!-- chatroom container, both list of chatrooms and the chatwindow itself  -->
+                        <div class = "chatRooms">
+                          <!-- chat window container, contains window and submission form for adding comments to chat -->
+                          <div class = "chatWindow">
+                            <div class = "window">
+                            </div>
+                            <div class = "commentBox">
+                              <form id = "submitComment" method = "post">
+                                <label><b>Chat:</b></label>
+                                <input type="text" placeholder="Text goes here" name="comment" id="userComment"/>
+                                <button id = "commentButton">Enter</button>
+                              </form>
+                            </div>
+                          </div>
+                          <!-- chat room container, for the list of chat rooms -->
+                          <div class = "chatRoom">
+                          </div>
+                        </div>
 
                     </div>
                 </div>
             </div>
         </div>
-
-
     </div>
 
     <!-- Menu Toggle JavaScript -->
     <script>
+
+        var newChat = $('.createRoom');
+
         $("#menu-toggle").click(function (e) {
             e.preventDefault(); <!-- prevent the default action of clicking a button = going to a URL -->
             $("#wrapper").toggleClass("menuDisplayed");
         });
 
+	<!-- chatLink function creates a dynamic Create Classroom form/button -->
+	<!-- checks for amount of buttons in div, when 1 is already made it will no longer create more forms -->
+        $("#chatLink").click(function (ChatRoomsButton) {
+            ChatRoomsButton.preventDefault(); <!-- prevent the default action of clicking a button = going to a URL -->
+            var createChat = $('.createChat')
+            var test = $('<button class="chatButton">Create Chatroom</button>')
+
+            if(createChat.find('button').size() < 1){
+              createChat.append(test);
+            }
+
+           <!-- when created button is clicked, display the form to input chatroom name and password (which is the .creatRoom class defined above menu-toggle) -->
+            test.click(function () {
+                newChat.css('display', 'block');
+            });
+
+        });
+
+	<!-- when submit form for chatroom is clicked, put chatroom name into variable and append the chatroom as a hyperlink to a container div -->
+	<!--it is important to note we also dynamically append this hyperlink into dynamically created divs, called "room container" -->
+        $('#chatID').click(function(self){
+          self.preventDefault();
+          var chatName = $('#chatName').val();
+          $('.chatRoom').append('<div id = "roomContainer">'+'<a href="#" id = "newRoom" name ='+chatName+'>'+chatName+'</a>'+'</div>');
+        });
+
+	<!-- Room contained is contained within the .chatroom container -->
+	<!-- meaning the dynamically created hyperlinks inside thhe divs are inside thhe .chatroom class-->
+	<!--Thus, we can select these hyperlinks by manipulating all clicks inside of the chatroom container with id of #newRoom -->
+        $('.chatRoom').on('click', '#newRoom', function(){
+
+	<!-- when hyperlink is clicked (if no hyperlink has been clicked at this point, this is the first time the text box and chat box are revealed -->
+ 	<!-- text and chatbox fit dynamically to the page side by side (at least on my resolution...)) the forms clear themselves out so that the new chatroom -->
+	<!-- will not interfere with the old chatroom. All chatrooms are located inside 2 divs (.window, .commentbox) both inside .chatWindow -->
+	<!-- to reiterate, both of these divs refresh themselves on click. As of now I don't have a good way to add a comment to the sever from this -->
+	<!-- I tried an AJAX function, but the function just ties up the webpage and crashes each time. Top priority on solving, this is one of the main barries to full functionality -->
+          var roomName = $(this).attr('name');
+          $(".window").empty();
+          $("#submitComment")[0].reset();
+          $(".window").css('display', 'block');
+          $(".commentBox").css('display', 'block');
+          $('.commentBox').on('click', '#commentButton', function(thisButton){
+          thisButton.preventDefault();
+          var comment = $('#userComment').val();
+          alert(comment);
+          });
+        });
+
     </script>
-
-
-
-
-
 </body>
 </html>
 
