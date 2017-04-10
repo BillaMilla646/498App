@@ -16,7 +16,11 @@ Parameters:
        LEX.				[property From]
        SDF.				[property From]
        pattern is improperly quoted.    [error]
-   
+       
+   CompareNeraby:
+   	empty.
+	Compare Nearby Airports.
+	
    departureDate:
    	empty.
 	today.
@@ -35,6 +39,10 @@ Parameters:
    returnTime:
    	morning.
 	evening.
+	
+   flexDates:
+   	empty.
+	Flexible Dates (Calendar View).
    
    passengers:
    	1.
