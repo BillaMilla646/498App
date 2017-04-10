@@ -3,8 +3,8 @@
 
 Parameters:
    Price:
-   	money.
-	miles.
+   	money.				[property money]
+	miles.				[property miles]
    To:
        empty.				[property noTo]
        DAB.				[property To]
@@ -42,12 +42,17 @@ Parameters:
 	9.
 
    eventCode:
-        empty.
-	NM123.
-	AAAAA.
-	11111.
-	AB789.
-	00000.
+        empty.				[if money]
+	NM123.				[if money]
+	AAAAA.				[if money]
+	11111.				[if money]
+	AB789.				[if money]
+	00000.				[if money]
+	A.				[if money]
+	BB.				[if money]
+	CCC.				[if money]
+	DDDD.				[if money]
+	EEEEE.				[if money]
 	
    Embeddedblanks:
        no embedded blank.               [if NonEmpty]
@@ -63,7 +68,7 @@ Parameters:
        omitted.                         [error]
    SearchBy:
    	Fare Class.			[property FC]
-	Show Best Fares.		[property SBF]
+	Show Best Fares.		[property SBF] [if money]
    ShowBestFaresFor:
    	Basic Economy.		[if SBF]
 	Main Cabin.		[if SBF]
@@ -96,8 +101,12 @@ Parameters:
 	Business F.             [if FC]
 
    Extras:
-   	Refundable.		[property refundable]
+   	Refundable.		[property refundable] [if money]
 	Nonstop.		[property nonstop]
+	
+   OperatedBy
+   	Delta Only.			[if miles]
+	Delta & Partner Airlines	[if miles]
 
 Environments:
    Number of occurrences ofpatterninfile:
