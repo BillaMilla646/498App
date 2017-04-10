@@ -22,22 +22,24 @@ Parameters:
 	Compare Nearby Airports.
 	
    departureDate:
-   	empty.
-	today.
-	month.
-	elevenmonths.
+   	empty.				[error]
+	today.				[property leaveToday]
+	month.				[property leaveMonth]
+	elevenmonths.			[property leaveEleven]
+	
    departureTime:
-   	morning.
-	evening.
+   	morning.			[property leaveMorn]
+	evening.			[property leaveEve]
 
    returnDate:
-   	empty.
-	today.
-	month.
+   	empty.				[error]
+	today.				[if leaveMonth] [error]
+					[else] [if leaveEleven] [error]
+	month.				[if leaveEleven] [error]
 	elevenmonths.
 
    returnTime:
-   	morning.
+   	morning.			[if leaveEve && leaveToday] [error]
 	evening.
 	
    flexDates:
