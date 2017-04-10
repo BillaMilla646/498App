@@ -41,6 +41,14 @@ Parameters:
 	5.
 	9.
 
+   eventCode:
+        empty.
+	NM123.
+	AAAAA.
+	11111.
+	AB789.
+	00000.
+	
    Embeddedblanks:
        no embedded blank.               [if NonEmpty]
        one embedded blank.              [if NonEmpty && Quoted]
