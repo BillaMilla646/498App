@@ -40,6 +40,8 @@ Parameters:
 
    returnTime:
    	morning.			[if leaveEve && leaveToday] [error]
+					[else] [if leaveEve && leaveMonth] [error]
+					[else] [if leaveEve && leaveEleven] [error]
 	evening.
 	
    flexDates:
