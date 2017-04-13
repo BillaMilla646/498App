@@ -16,15 +16,23 @@
 			/**** If there is a count, we know the user has subscribed to chatrooms ***/
 			if (count($chatroomComments) > 0)
 			{
-				
+				$myarray = array();
+				$nameArray = array();
+				$commentArray = array();
 				//echo "WTF MATE";
 				//echo count($matchedChatrooms);
 				for ($i = 0; $i < count($chatroomComments); ++$i) {
-        			echo $chatroomComments[$i]['Name'];
-        			echo "<br>";
-        			echo $chatroomComments[$i]['Comment'];
-        			echo "<br>";
+        			// echo $chatroomComments[$i]['Name'];
+        			// echo "<br>";
+        			// echo $chatroomComments[$i]['Comment'];
+        			// echo "<br>";
+					array_push($nameArray, $chatroomComments[$i]['Name']);
+					array_push($commentArray, $chatroomComments[$i]['Comment']);
     			}
+				$myarray['Name'] = $nameArray;
+				$myarray['Comment'] = $commentArray;
+				//echo json_encode($commentArray);
+				echo json_encode($myarray);
 				
 			}			
 			else 
@@ -37,5 +45,4 @@
 	
 	getChatroomComments(1,1);
 	
-
 ?>
