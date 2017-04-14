@@ -1,0 +1,132 @@
+
+# Test Specification for site http://www.delta.com/air-shopping/searchFlights.action
+
+Parameters:
+   Price:
+   	money.				[property money]
+	miles.				[property miles]
+   To:
+       empty.				[property noTo]
+       DAB.				[property To]
+       EWR.				[property To]
+       ATL.				[property To]
+       longer than any line in file.    [error]
+   From:
+       empty.				[property noFrom]
+       LEX.				[property From]
+       SDF.				[property From]
+       pattern is improperly quoted.    [error]
+       
+   CompareNeraby:
+   	empty.
+	Compare Nearby Airports.
+	
+   departureDate:
+   	empty.				[error]
+	today.				[property leaveToday]
+	month.				[property leaveMonth]
+	elevenmonths.			[property leaveEleven]
+	
+   departureTime:
+   	morning.			[property leaveMorn]
+	evening.			[property leaveEve]
+
+   returnDate:
+   	empty.				[error]
+	today.				[if leaveMonth] [error]
+					[else] [if leaveEleven] [error]
+	month.				[if leaveEleven] [error]
+	elevenmonths.
+
+   returnTime:
+   	morning.			[if leaveEve && leaveToday] [error]
+					[else] [if leaveEve && leaveMonth] [error]
+					[else] [if leaveEve && leaveEleven] [error]
+	evening.
+	
+   flexDates:
+   	empty.
+	Flexible Dates (Calendar View).
+   
+   passengers:
+   	1.
+	5.
+	9.
+
+   eventCode:
+        empty.				[if money]
+	NM123.				[if money]
+	AAAAA.				[if money]
+	11111.				[if money]
+	AB789.				[if money]
+	00000.				[if money]
+	A.				[if money]
+	BB.				[if money]
+	CCC.				[if money]
+	DDDD.				[if money]
+	EEEEE.				[if money]
+	
+   Embeddedblanks:
+       no embedded blank.               [if NonEmpty]
+       one embedded blank.              [if NonEmpty && Quoted]
+       several embedded blanks.         [if NonEmpty && Quoted]
+   Embeddedquotes:
+       no embedded quotes.              [if NonEmpty] 
+       one embedded quote.              [if NonEmpty]
+       several embedded quotes.         [if NonEmpty] [single]
+   Filename:
+       good file name.
+       no file with this name.          [error]
+       omitted.                         [error]
+   SearchBy:
+   	Fare Class.			[property FC]
+	Show Best Fares.		[property SBF] [if money]
+   ShowBestFaresFor:
+   	Basic Economy.		[if SBF]
+	Main Cabin.		[if SBF]
+	Delta Comfort.		[if SBF]
+	Delta One.		[if SBF]
+
+   FareClass:
+   	Basic Economy E.	[if FC]
+	Main Cabin V.		[if FC]
+	Main Cabin X.		[if FC]
+	Main Cabin T.		[if FC]
+	Main Cabin U.           [if FC]
+	Main Cabin L.           [if FC]
+	Main Cabin K.           [if FC]
+	Main Cabin Q.           [if FC]
+	Main Cabin H.           [if FC]
+	Main Cabin S.           [if FC]
+	Main Cabin M.           [if FC]
+	Main Cabin B.           [if FC]
+	Main Cabin Y.           [if FC]
+	Delta Comfort W.	[if FC]
+	Business Z.		[if FC]
+	Business I.		[if FC]
+	Business D.		[if FC]
+	Business C.             [if FC]
+	Business J.             [if FC]
+	Business G.             [if FC]
+	Business A.             [if FC]
+	Business P.             [if FC]
+	Business F.             [if FC]
+
+   Extras:
+   	Refundable.		[property refundable] [if money]
+	Nonstop.		[property nonstop]
+	
+   OperatedBy
+   	Delta Only.			[if miles]
+	Delta & Partner Airlines	[if miles]
+
+Environments:
+   Number of occurrences ofpatterninfile:
+       none.                            [if NonEmpty] [single]
+       exactly one.                     [if NonEmpty] [property Match]
+       more than one.                   [if NonEmpty] [property Match]
+   Pattern occurrencesontargetline:
+       # assumes line contains the pattern
+       one.                             [if Match]
+       more than one.                   [if Match] [single]
+
