@@ -26,12 +26,12 @@
                     <form class="modal-content animate" method="post" action="../functions/verifyUsername.php">
                         <div class="container">
                             <label><b>Email</b></label>
-                            <input type="text" placeholder="Enter Email" name="email" required>
+                            <input id="uname" type="text" placeholder="Enter Email" name="email" required>
 
                             <label><b>Password</b></label>
                             <input type="password" placeholder="Enter Password" name="psw" required>
 
-                            <button id="uname" type="submit" name="submit" onclick="setUnameCookie()">Login</button>
+                            <button type="submit" name="submit" onclick="setUnameCookie()">Login</button>
                             <input type="checkbox" checked="checked"> Remember me
                             
                             <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
