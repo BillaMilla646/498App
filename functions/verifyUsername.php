@@ -39,6 +39,20 @@
 
 	
 	}
-	
+	$email = $_POST["email"];
+        $password = $_POST["psw"];
+
+        $verified = verifyUsername($email, $password);
+        if (isset($_POST['submit']) && $verified)
+    {
+
+        header("Location:http://ctma226.netlab.uky.edu/498App/src/StudyBuddyHomePage.html");
+
+
+    }
+	else
+{
+	 header("Location:http://ctma226.netlab.uky.edu/498App/src/index.html");
+}
 	
 ?>

@@ -1,0 +1,253 @@
+body {
+    font-family: arial, sans-serif;
+    text-align: center;
+    background-color: #99d6ff;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#header {
+    width: 100%;
+    font-family: arial, sans-serif;
+    font-size: 60px;
+    font-weight: bold;
+    font-style: italic;
+    color: white;
+    text-shadow: 2px 2px #59aeff;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-top: 10px;
+    border-bottom: 10px;
+    border-right: 0px;
+    border-left: 0px;
+    border-color: #59aeff;
+    border-style: solid;
+}
+
+#centerScreen {
+    position:absolute;
+    margin-top: 10px;
+    width: 100%;
+    height: 100%;
+    background: url("/img/HomePagePic.jpg");
+    background-size: cover;
+}
+
+#loginWrapper {
+    height: 120px;
+    width: 300px;
+    padding-right: 40px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    background: #54acff; 
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 500px;
+    opacity: 0.8;
+    filter:alpha(opacity=80);
+    border-radius: 4px;
+}
+
+#loginWrapper ul li {
+    list-style: none;
+    font-weight: bold;
+    text-shadow: 1px 1px #59aeff;
+    font-size: 20px;
+    padding: 10px;
+    border: 1px;
+    border-color: white;
+    border-style: solid;
+}
+
+#loginWrapper a {
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    padding: 20px;
+}
+
+#loginWrapper ul li:hover {
+    background: #006ed6;
+    transition: all 0.45s;
+    opacity: 0.80;
+    filter: alpha(opacity=80);
+    cursor: pointer;
+}
+
+#mainWrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url("/img/BooksPic.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#signUpContainer {
+    margin: 20% auto;
+    width: 400px;
+    height: 280px;
+    padding-top: 42px;
+    padding-bottom: 30px;
+    padding-right: 30px;
+    padding-left: 30px;
+    background-color: rgba(80,150,255, 0.8);
+    border-radius: 4px;
+}
+
+.formInput input {
+    height: 40px;
+    width: 350px;
+    margin: 8px;
+    padding-left: 10px;
+    font-size: 16px;
+}
+
+.signUpButton {
+    margin-top: 8px;
+    width: 150px;
+    height: 50px;
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    text-shadow: 1px 1px #59aeff;
+    border-color: white;
+    border-width: 1px;
+    border-style: solid;
+    background-color: rgba(0,0,0,0);
+}
+
+.signUpButton:hover {
+    background: #006ed6;
+    transition: all 0.45s;
+    opacity: 0.80;
+    filter: alpha(opacity=80);
+    cursor: pointer;
+}
+
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    font-size: 16px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 4px;
+    
+}
+
+.container label {
+    color: #eee;
+}
+
+button {
+    background-color: rgb(80,150,255);
+    color: white;
+    height: 40px;
+    margin: 8px 0px;
+    border: solid 1px;
+    border-color: white;
+    font-size: 12px;;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 4px;
+}
+
+button:hover {
+    background: #006ed6;
+}
+
+.cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    margin-left: 50px;
+    background-color: #aaa;
+}
+
+.container {
+    padding: 16px;
+    border-radius: 4px;
+}
+
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: rgba(80,150,255, 0.8);
+    margin: 15% auto 15% auto; 
+    border: 1px solid #888;
+    width: 400px; 
+    height: 280px;
+    border-radius: 4px;
+}
+
+.close {
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: red;
+    cursor: pointer;
+}
+
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)} 
+    to {-webkit-transform: scale(1)}
+}
+    
+@keyframes animatezoom {
+    from {transform: scale(0)} 
+    to {transform: scale(1)}
+}
+
+@media screen and (max-width: 300px) {
+    span.psw {
+        display: block;
+        float: none;
+    }
+    .cancelbtn {
+        width: 100%;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+

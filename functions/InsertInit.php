@@ -12,16 +12,16 @@ if ($_SESSION['db']->query($sql) === TRUE) {
     echo "Error deleting Users: " . $_SESSION['db']->error();
 }
 /****************** Add default user Clay *******************/
-$sql = "INSERT into Users( Email, Password)
-	VALUES ('clay@StudyBuddy.com', sha2('Admin12345', 256));";
+$sql = "INSERT into Users( Email, Name, Password)
+	VALUES ('clay@StudyBuddy.com', 'Clay Marshall', sha2('Admin12345', 256));";
 if ($_SESSION['db']->query($sql) === TRUE) {
     echo "User Clay created successfully<br>";
 } else {
     echo "Error creating Clay Users: " . $_SESSION['db']->error();
 }
 /****************** Add default user Test *******************/
-$sql = "INSERT into Users (Email, Password)
-	VALUES ('test@StudyBuddy.com', sha2('Test',256));";
+$sql = "INSERT into Users (Email, Name, Password)
+	VALUES ('test@StudyBuddy.com', 'Testing User', sha2('Test',256));";
 if ($_SESSION['db']->query($sql) === TRUE) {
     echo "User Test created successfully<br>";
 } else {
@@ -69,6 +69,22 @@ if ($_SESSION['db']->query($sql) === TRUE) {
 /****************** Add comment in CS498 *******************/
  $sql = "INSERT into Comments(User_Id, Chatroom_Id, Comment, Number_Of_Likes)
 	VALUES (1, 1, 'Look I can Make a comment', 2);";
+if ($_SESSION['db']->query($sql) === TRUE) {
+    echo "First Comment inserted succesfully<br>";
+} else {
+    echo "Error inserting comment: " . $_SESSION['db']->error();
+} 
+/****************** Add comment in CS498 *******************/
+ $sql = "INSERT into Comments(User_Id, Chatroom_Id, Comment, Number_Of_Likes)
+	VALUES (2, 1, 'Wow that is awesome!', 0);";
+if ($_SESSION['db']->query($sql) === TRUE) {
+    echo "First Comment inserted succesfully<br>";
+} else {
+    echo "Error inserting comment: " . $_SESSION['db']->error();
+} 
+/****************** Add comment in CS498 *******************/
+ $sql = "INSERT into Comments(User_Id, Chatroom_Id, Comment, Number_Of_Likes)
+	VALUES (1, 1, 'This is so much better than groupme.', 3);";
 if ($_SESSION['db']->query($sql) === TRUE) {
     echo "First Comment inserted succesfully<br>";
 } else {

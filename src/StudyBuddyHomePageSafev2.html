@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>StudyBuddy</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../css/sidebar.css">
+</head>
+
+<body style="background-color:#8ecaff;" id="index">
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li>This is the Username</li>
+                <li><a href="#" id="chatLink">Chatrooms</a></li>
+                <li><a href="#">Search</a></li>
+                <li><a href="#">Profile</a></li>
+                <li><a href="#">Settings</a></li>
+                <li><a href="http://ctma226.netlab.uky.edu/">Logout</a></li>
+            </ul>
+        </div>
+
+
+        <!-- Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+
+                    <!--
+                        <div class="row">
+                            <div>
+                                <img src="books.png" class="img-responsive" width="150" height="150" align="" style="padding-left: 10px; float: left;">
+                                <i style="float: left; padding-left: 10px;"><h1>StudyBuddy</h1></i>
+                                <img src="books.png" class="img-responsive" width="150" height="150" style="margin-left: 10px; float: left;">
+                                <div style="clear: both"/>
+
+                            </div>
+                        </div>
+                      -->
+
+                        <h1 style="color: white; text-align: center;">StudyBuddy</h1>
+                        <a href="#" class="btn btn-success" id="menu-toggle">Dashboard</a>
+
+                        <br></br>
+
+                        <!-- > create chatroom button  <-->
+                        <div class = "createChat">
+                        </div>
+
+                        <!-- created chatroom form, calls addChatroom.php and appends chatroom to database <-->
+                        <div class = "createRoom" id="createRoom">
+                          <form method="POST" id = "myForm" action="../functions/addChatroom.php">
+                            <label><b>Chatroom</b></label>
+                            <input type="text" autocomplete = "off"  placeholder="Name of Chatroom" name="chatName" id = "chatName" required/>
+
+                            <label><b>Password</b></label>
+                            <input type="password" autocomplete = "off"  placeholder="Enter Password" name="psw" required/>
+
+                            <input type="submit" name="submit" id ="chatID"/> 
+                            <button type="button" onclick="document.getElementById('createRoom').style.display='none'" class="cancelbtn">Cancel</button>
+                          </form>
+                        </div>
+
+                        <div class = "chatRooms">
+                          <div class = "chatRoom">
+                          </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Menu Toggle JavaScript -->
+    <script>
+
+        var newChat = $('.createRoom');
+
+        $("#menu-toggle").click(function (e) {
+            e.preventDefault(); <!-- prevent the default action of clicking a button = going to a URL -->
+            $("#wrapper").toggleClass("menuDisplayed");
+        });
+
+        $("#chatLink").click(function (ChatRoomsButton) {
+            ChatRoomsButton.preventDefault(); <!-- prevent the default action of clicking a button = going to a URL -->
+            var createChat = $('.createChat')
+            var test = $('<button class="chatButton">Create Chatroom</button>')
+
+            if(createChat.find('button').size() < 1){
+              createChat.append(test);
+            }
+
+            test.click(function () {
+		$('#myForm')[0].reset();
+                newChat.css('display', 'block');
+            });
+
+        });
+
+        $('#chatID').click(function(self){
+          self.preventDefault();
+          var chatName = $('#chatName').val();
+          $('.chatRoom').append('<div>'+'<a href="#" id'+chatName+'= >'+chatName+'</a>'+'</div>');
+        });
+
+    </script>
+</body>
+</html>
+
+

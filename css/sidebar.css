@@ -1,0 +1,94 @@
+#sidebar-wrapper{
+    z-index: 1;
+    position: absolute;
+    width: 0;
+    height: 100%;
+    overflow-y: hidden; /* content too long = hide it */
+    background: #59aeff;
+    opacity: 0.9; /* can see through it */
+
+}
+
+/* [Page] Content */
+#page-content-wrapper{
+    width: 100%;
+    position: absolute;
+    padding: 15px;
+
+
+}
+
+/* Create chatroom box styling */
+.createRoom{
+  padding-top: 20px;
+  display: none;
+}
+
+.chatRooms{
+  box-sizing: border-box;
+  padding-top: 5px;
+  padding-left: 5px;
+  max-height: 500px;
+  max-width: 1200px;
+}
+
+.chatRoom{
+  width: 100px;
+  height: 500px;
+  display: inline;
+  overflow-y: auto;
+  float:left;
+}
+
+.chatWindow{
+  display: none;
+  border: none;
+  display: inline;
+  height: 500px;
+  width: 1000px;
+  float: right;
+}
+
+.window{
+  display: none;
+  background: white;
+  border: 1px solid black;
+  height: 450px;
+}
+
+.commentBox{
+  padding-top: 20px;
+  padding-left: 100px;
+  display: none;
+}
+
+#userComment{
+  display: inline-block;
+  width: 800px;
+  height:50px;
+}
+
+/* Change width of sidebar when the menu is displayed */
+#wrapper.menuDisplayed #sidebar-wrapper{
+    width: 250px;
+}
+/* Sidebar should not overlap main page content */
+#wrapper.menuDisplayed #page-content-wrapper{
+    padding-left: 250px;
+}
+/* Sidebar Styles */
+.sidebar-nav{
+    list-style-type: none;
+    padding: 0;
+
+}
+.sidebar-nav li{
+    text-indent: 20px;
+    line-height: 40px;
+}
+.sidebar-nav li a{
+    display: block;
+    text-decoration: none;
+    color: #ddd;
+}
+
