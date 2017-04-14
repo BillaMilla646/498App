@@ -21,9 +21,9 @@
 	$chatRoom = $_POST["chatName"];
         $password = $_POST["psw"];
 
-	if (isset($_POST['submit']))
-	{
+//	if (isset($_POST['submit']))
+//	{
 	//	header("Location:www.ggogle.com");
 		addChatroom($chatRoom, $password);	
-	}
+//	}
 ?>	

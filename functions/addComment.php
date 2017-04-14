@@ -7,7 +7,7 @@
 	{
 		/****************** Add new chatroom *******************/
 		$sql = "INSERT into Comments (User_Id, Chatroom_Id, Comment)
-    	VALUES ('$UID', '$CID', '$Comment');";
+    	VALUES ('$UID', '$CID', '$newcomment');";
 		if ($_SESSION['db']->query($sql) === TRUE)
 		{
     		echo "Comment" . $newcomment . " created successfully<br>";
@@ -19,7 +19,8 @@
 		$_SESSION['db']->close();
 	}
 	
-	$chatName = $_POST("chatName");
-	$comment = $_POST("comment");
-	addComment(1, $chatID, $comment);
+	$UID = $_POST["UID"];
+	$chatID = $_POST["chatID"];
+	$comment = $_POST["comment"];
+	addComment($UID, $chatID, $comment);
 ?>
